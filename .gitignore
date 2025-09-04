@@ -1,3 +1,5 @@
-*.exe
-
-.gitignore
+*
+!*.c
+!*.cpp
+!*.h
+!.gitignore
