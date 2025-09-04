@@ -1,5 +1,3 @@
 *.exe
-tempCodeRunnerFile.cpp
-*.[!.]*
 
 .gitignore
