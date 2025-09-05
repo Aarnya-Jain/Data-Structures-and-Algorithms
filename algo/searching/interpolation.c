@@ -24,7 +24,7 @@ int interpolation(int * arr,int key,int low,int high){
 
   if(arr[pos] == key) return pos;
   if(arr[pos]>key) return interpolation(arr,key,low,pos-1);
-  if(arr[pos]<key) return interpolation(arr,key,low+1,high);
+  if(arr[pos]<key) return interpolation(arr,key,pos+1,high);
 
 }
 

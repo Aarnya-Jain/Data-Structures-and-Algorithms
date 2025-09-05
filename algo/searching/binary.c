@@ -1,15 +1,15 @@
 // for Sorted datasets
 // Binary Search goes to the middle element to check.
 
-// T(n) = O(log(n)) -- avg { better than binary }
-// T(n) = O(log(n)) -- worst { not uniformly distributed }
+// T(n) = O(log(n)) -- avg
+// T(n) = O(log(n)) -- worst 
 // S(n) = O(1) -- iterative
 // S(n) = O(log(n)) -- recursive
 
 #include <stdio.h>
 
 // iterative approach
-int binary_sort(int * arr,int size,int key){
+int binary_search(int * arr,int size,int key){
   int start = 0;
   int last = size-1;
 
