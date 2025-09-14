@@ -32,6 +32,44 @@ void level_traverse(node * root){
   }
 }
 
+void * build_from_level(node *& root){
+  queue<node *> q;
+  int data;
+  cout << "Enter the data : ";
+  cin >> data;
+  root = new node(data);
+
+  while(!q.empty()){
+    node * temp = q.front();
+    q.pop();
+
+    cout << "Enter the left node of "<< temp->data <<" : ";
+    int leftdata;
+    cin >> leftdata;
+
+    if(leftdata != -1){
+      temp->left = new node(leftdata);
+      q.push(temp->left);
+    }
+
+    cout << "Enter the right node of "<< temp->data <<" : ";
+    int rightdata;
+    cin >> rightdata;
+
+    if(rightdata != -1){
+      temp->right = new node(rightdata);
+      q.push(temp->right);
+    }
+  }
+}
+
+/*
+  Home work
+  1. Do Reverse level traversal ,
+  2. Write codes of in , post , pre in copy
+  3. Their iterative approaches ko code 
+*/
+
 int main(){
   node * root ;
   root = create_tree(root);
