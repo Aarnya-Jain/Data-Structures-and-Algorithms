@@ -1,7 +1,6 @@
 #include <iostream>
 using namespace std;
 
-
  struct node
 {
   int data;
@@ -17,7 +16,7 @@ using namespace std;
 };
 
 node * create_tree(node * root){
-  printf("Enter the data : ");
+  printf("\nEnter the data : ");
   int x;
   scanf("%d",&x);
   root = new node(x);
@@ -32,13 +31,4 @@ node * create_tree(node * root){
   root->right = create_tree(root->right);
   return root;
 
-}
-
-
-
-int main(){
-  node * root;
-  root =  create_tree(root);
-  cout << "the tree is created "<< endl;
-  return 0;
 }
