@@ -67,7 +67,6 @@ void * build_from_level(node *& root){
   Home work
   1. Do Reverse level traversal ,
   2. Write codes of in , post , pre in copy
-  3. Their iterative approaches ko code 
 */
 
 int main(){
