@@ -25,7 +25,7 @@ node * create_tree(node * root){
     return NULL;
   }
 
-  cout << "Enter left data for " <<x << " : " ;
+  cout << "Enter left data for " << x << " : " ;
   root->left = create_tree(root->left);
   cout << "Enter right data for " << x << " : ";
   root->right = create_tree(root->right);

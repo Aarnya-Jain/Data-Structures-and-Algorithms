@@ -26,7 +26,7 @@ public:
             return;
         }
 
-        if (isEmpty()) { 
+        if (isEmpty()) {
             front = rear = 0;
         } else {
             rear = (rear + 1) % SIZE;
@@ -85,7 +85,7 @@ int main() {
     q.print();
 
     q.enqueue(50);
-    q.enqueue(60); // should wrap around
+    q.enqueue(60);
 
     q.print();
 
