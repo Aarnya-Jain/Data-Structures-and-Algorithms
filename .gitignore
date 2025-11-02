@@ -3,6 +3,8 @@
 !*.cpp
 !*.h
 !*.png
+!*.jpg
+!*.jpeg
 !LICENSE
 !README.md
 !*/
