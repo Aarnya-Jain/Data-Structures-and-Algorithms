@@ -1,15 +1,4 @@
-// yos
-
-/*
- * We can also create tree using arrays.
- * left child of node at index i is at index 2*i + 1
- * right child of node at index i is at index 2*i + 2
- * parent of node at index i is at index (i-1)/2
- * time complexity of insertion, deletion and search is O(1)
- * space complexity is O(n)
- */
-
- #include <iostream>
+#include <iostream>
 #include <vector>
 using namespace std;
 
@@ -24,7 +13,7 @@ public:
         tree.resize(size, -1); // initialize with -1 (empty)
     }
 
-    void insert(int value, int index) {
+    void insert(int index, int value) {
         if (index >= capacity) {
             cout << "Index out of bounds!\n";
             return;
@@ -41,10 +30,11 @@ public:
     }
 
     void printChildren(int index) {
-        if (tree[index] == -1) {
+        if (index >= capacity || tree[index] == -1) {
             cout << "No node at index " << index << "\n";
             return;
         }
+
         int left = 2 * index + 1;
         int right = 2 * index + 2;
 
@@ -60,7 +50,6 @@ public:
             cout << "Right Child: NULL\n";
     }
 
-    // Traversals
     void preorder(int index) {
         if (index >= capacity || tree[index] == -1) return;
         cout << tree[index] << " ";
@@ -91,22 +80,28 @@ public:
 };
 
 int main() {
-    BinaryTreeArray bta(10);
+    BinaryTreeArray bta(13);
 
-    bta.insert(1, 0);
-    bta.insert(2, 1);
-    bta.insert(3, 2);
-    bta.insert(4, 3);
-    bta.insert(5, 4);
-    bta.insert(6, 5);
-    bta.insert(7, 6);
+    // start from index 0
+    bta.insert(0, 11);
+    bta.insert(1, 3);
+    bta.insert(2, 4);
+    bta.insert(3, 14);
+    bta.insert(4, -1);
+    bta.insert(5, 9);
+    bta.insert(6, -1);
+    bta.insert(7, 7);
+    bta.insert(8, 5);
+    bta.insert(9, 13);
+    bta.insert(10, -1);
+    bta.insert(11, 6);
+    bta.insert(12, 10);
 
     bta.printArray();
     cout << "\n";
 
-    bta.printChildren(0);
-    bta.printChildren(1);
-    bta.printChildren(2);
+    for (int i = 0; i <= 12; i++)
+        bta.printChildren(i);
 
     cout << "\nPreorder: ";
     bta.preorder(0);

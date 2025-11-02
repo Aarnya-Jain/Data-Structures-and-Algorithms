@@ -1,39 +1,15 @@
 // here is the code for the balance function in an AVL tree
 #include <iostream>
-#include "../BST/tree.h"
 using namespace std;
 
-node * balance(node *root) {
-    int balanceFactor = getBalanceFactor(root);
+struct node {
+    int data;
+    node *left, *right;
+    int height;
+    node(int data) : data(data), left(nullptr), right(nullptr), height(1) {}
+};
 
-    // Left heavy
-    if (balanceFactor > 1) {
-        // Left-Left case
-        if (getBalanceFactor(root->left) >= 0) {
-            return rightRotate(root);
-        }
-        // Left-Right case
-        else {
-            root->left = leftRotate(root->left);
-            return rightRotate(root);
-        }
-    }
-    // Right heavy
-    else if (balanceFactor < -1) {
-        // Right-Right case
-        if (getBalanceFactor(root->right) <= 0) {
-            return leftRotate(root);
-        }
-        // Right-Left case
-        else {
-            root->right = rightRotate(root->right);
-            return leftRotate(root);
-        }
-    }
 
-    // Already balanced
-    return root;
-}
 
 int getHeight(node *N) {
     if (N == nullptr)
@@ -69,12 +45,81 @@ node* leftRotate(node *c) {
     return p; // new root
 }
 
+node * balance(node *root) {
+    int balanceFactor = getBalanceFactor(root);
+
+    // Left heavy
+    if (balanceFactor > 1) {
+        // Left-Left case
+        if (getBalanceFactor(root->left) >= 0) {
+            return rightRotate(root);
+        }
+        // Left-Right case
+        else {
+            root->left = leftRotate(root->left);
+            return rightRotate(root);
+        }
+    }
+    // Right heavy
+    else if (balanceFactor < -1) {
+        // Right-Right case
+        if (getBalanceFactor(root->right) <= 0) {
+            return leftRotate(root);
+        }
+        // Right-Left case
+        else {
+            root->right = rightRotate(root->right);
+            return leftRotate(root);
+        }
+    }
+
+    // Already balanced
+    return root;
+}
+
+node * insert (node * root) {
+    int data;
+    cin >> data;
+        // travrsing to the correct position for the insert
+        while (data != -1) {
+        node *newnode = new node(data);
+
+        if (!root) {
+            root = newnode;
+        } else {
+
+            // find insertion point
+            node *temp = root;
+            node *parent = nullptr;
+
+            while (temp) {
+                parent = temp;
+                if (data < temp->data)
+                    temp = temp->left;
+                else
+                    temp = temp->right;
+            }
+
+            if (data < parent->data)
+                parent->left = newnode;
+            else
+                parent->right = newnode;
+
+            // rebalance after insert
+            root = balance(root);
+        }
+
+        cin >> data;
+        }
+
+    return root;
+}
+
 // Example usage
 int main() {
-    node *root = new node(30);
-    root->left = new node(20);
-    root->left->left = new node(10); // This will cause imbalance
-    root = balance(root);
+    node *root = 0;
+    cout << "Enter the nodes data for insertion ( -1 to exit )"<<endl;
+    root = insert(root);
+    delete(root);
     return 0;
-
 }

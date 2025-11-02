@@ -63,12 +63,6 @@ void * build_from_level(node *& root){
   }
 }
 
-/*
-  Home work
-  1. Do Reverse level traversal ,
-  2. Write codes of in , post , pre in copy
-*/
-
 int main(){
   node * root ;
   root = create_tree(root);
